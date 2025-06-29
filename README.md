@@ -1,5 +1,7 @@
 # MS-DOS 6.22 Simulator
 
+Test site: https://msdos-simulator.onrender.com/
+
 A nostalgic MS-DOS 6.22 operating system simulator that runs entirely in your web browser. Experience the authentic DOS computing environment of the early 1990s with classic games, commands, and a retro CRT monitor aesthetic.
 
 ## 🎮 Features
