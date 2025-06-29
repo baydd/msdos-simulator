@@ -9,6 +9,10 @@ import { PacManGame } from '../games/PacManGame';
 import { SnakeGame } from '../games/SnakeGame';
 import { TetrisGame } from '../games/TetrisGame';
 import { DOSBrowser } from './DOSBrowser';
+import { DOSChat } from './DOSChat';
+import { DOSPaint } from './DOSPaint';
+import { DOSMusic } from './DOSMusic';
+import { DOSCalculator } from './DOSCalculator';
 
 export const DOSScreen: React.FC = () => {
   const [dosState, setDosState] = useState<DOSState>({
@@ -195,6 +199,22 @@ export const DOSScreen: React.FC = () => {
 
   if (dosState.currentProgram === 'browser') {
     return <DOSBrowser onExit={exitProgram} />;
+  }
+
+  if (dosState.currentProgram === 'chat') {
+    return <DOSChat onExit={exitProgram} />;
+  }
+
+  if (dosState.currentProgram === 'paint') {
+    return <DOSPaint onExit={exitProgram} />;
+  }
+
+  if (dosState.currentProgram === 'music') {
+    return <DOSMusic onExit={exitProgram} />;
+  }
+
+  if (dosState.currentProgram === 'calc') {
+    return <DOSCalculator onExit={exitProgram} />;
   }
 
   return (

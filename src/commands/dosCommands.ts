@@ -161,9 +161,12 @@ const helpCommand: DOSCommand = {
         'For more information on a specific command, type HELP command-name',
         '',
         'BROWSE         Opens the web browser.',
+        'CALC           Opens the calculator.',
         'CD             Displays the name of or changes the current directory.',
+        'CHAT           Opens the BBS chat system.',
         'CLS            Clears the screen.',
         'COPY           Copies one or more files to another location.',
+        'CREDITS        Shows developer information.',
         'DATE           Displays or sets the date.',
         'DEL            Deletes one or more files.',
         'DIR            Displays a list of files and subdirectories in a directory.',
@@ -172,12 +175,15 @@ const helpCommand: DOSCommand = {
         'FORMAT         Formats a disk for use with MS-DOS.',
         'HELP           Provides Help information for MS-DOS commands.',
         'MD             Creates a directory.',
+        'MUSIC          Opens the music player.',
+        'PAINT          Opens the paint program.',
         'RD             Removes a directory.',
         'REN            Renames a file or files.',
         'TIME           Displays or sets the system time.',
         'TYPE           Displays the contents of a text file.',
         'VER            Displays the MS-DOS version.',
-        'VOL            Displays a disk volume label and serial number.'
+        'VOL            Displays a disk volume label and serial number.',
+        'WEATHER        Shows current weather information.'
       ]
     };
   }
@@ -252,7 +258,7 @@ const memCommand: DOSCommand = {
   }
 };
 
-// Web Browser Command
+// New Application Commands
 const browseCommand: DOSCommand = {
   name: 'browse',
   description: 'Launch web browser',
@@ -264,12 +270,82 @@ const browseCommand: DOSCommand = {
   }
 };
 
+const chatCommand: DOSCommand = {
+  name: 'chat',
+  description: 'Launch BBS chat system',
+  execute: () => {
+    return {
+      output: ['Connecting to BBS Chat System...', 'Dialing (555) 123-4567...'],
+      program: 'chat'
+    };
+  }
+};
+
+const paintCommand: DOSCommand = {
+  name: 'paint',
+  description: 'Launch DOS Paint',
+  execute: () => {
+    return {
+      output: ['Starting DOS Paint v1.0...'],
+      program: 'paint'
+    };
+  }
+};
+
+const musicCommand: DOSCommand = {
+  name: 'music',
+  description: 'Launch music player',
+  execute: () => {
+    return {
+      output: ['Starting DOS Music Player v2.0...'],
+      program: 'music'
+    };
+  }
+};
+
+const calcCommand: DOSCommand = {
+  name: 'calc',
+  description: 'Launch calculator',
+  execute: () => {
+    return {
+      output: ['Starting DOS Calculator v3.1...'],
+      program: 'calc'
+    };
+  }
+};
+
+const weatherCommand: DOSCommand = {
+  name: 'weather',
+  description: 'Show weather information',
+  execute: () => {
+    const conditions = ['Sunny', 'Cloudy', 'Rainy', 'Snowy', 'Foggy'];
+    const temps = [15, 20, 25, 30, 35];
+    const condition = conditions[Math.floor(Math.random() * conditions.length)];
+    const temp = temps[Math.floor(Math.random() * temps.length)];
+    
+    return {
+      output: [
+        '╔══════════════════════════════════════╗',
+        '║            WEATHER REPORT            ║',
+        '╠══════════════════════════════════════╣',
+        `║ Location: Retro City                 ║`,
+        `║ Condition: ${condition.padEnd(26)} ║`,
+        `║ Temperature: ${temp}°C${' '.repeat(20)} ║`,
+        `║ Humidity: ${Math.floor(Math.random() * 40 + 40)}%${' '.repeat(22)} ║`,
+        `║ Wind: ${Math.floor(Math.random() * 20 + 5)} km/h${' '.repeat(19)} ║`,
+        '║                                      ║',
+        '║ Forecast: More retro weather ahead!  ║',
+        '╚══════════════════════════════════════╝'
+      ]
+    };
+  }
+};
+
 // Game launchers
 const doomCommand: DOSCommand = {
   name: 'doom',
   description: 'Launch DOOM',
   execute: (args, state) => {
-    // Check if we're in the DOOM directory or if DOOM.EXE exists
     const currentDir = findDOSItem(state.currentPath, state.currentDrive, state.fileSystem);
     const doomExe = currentDir?.children?.find(child => 
       child.name.toUpperCase() === 'DOOM' && child.extension.toUpperCase() === 'EXE'
@@ -456,6 +532,9 @@ const creditsCommand: DOSCommand = {
         '║  • CRT monitor simulation with scanlines                ║',
         '║  • PC Speaker sound effects                             ║',
         '║  • Web browser integration                              ║',
+        '║  • BBS Chat system                                      ║',
+        '║  • Paint program and music player                       ║',
+        '║  • Calculator and weather reports                       ║',
         '║                                                          ║',
         '║  Experience the golden age of computing!                ║',
         '╚══════════════════════════════════════════════════════════╝'
@@ -476,6 +555,11 @@ export const dosCommands: DOSCommand[] = [
   echoCommand,
   memCommand,
   browseCommand,
+  chatCommand,
+  paintCommand,
+  musicCommand,
+  calcCommand,
+  weatherCommand,
   doomCommand,
   princeCommand,
   pacmanCommand,
