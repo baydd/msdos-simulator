@@ -59,7 +59,7 @@ WIN     - Start Windows (joke command)
    ```
 
 4. **Open your browser**
-   Navigate to `http://localhost:5173` and enjoy the nostalgic DOS experience!
+   Navigate to `http://localhost:3000` and enjoy the nostalgic DOS experience!
 
 ## 🎯 How to Play Games
 
