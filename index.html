@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MS-DOS 6.22 Simulator</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Perfect+DOS+VGA+437&display=swap');
+      
+      @font-face {
+        font-family: 'DOS';
+        src: url('data:font/truetype;charset=utf-8;base64,') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        overflow: hidden;
+        font-family: 'Courier New', 'Perfect DOS VGA 437', monospace;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      .dos-font {
+        font-family: 'Courier New', 'Perfect DOS VGA 437', monospace;
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
